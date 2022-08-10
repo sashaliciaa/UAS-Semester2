@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sasha Alicia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: "Times New Roman";
+        }
+    </style>
+</head>
+
+<body>
+    <!--NavBar-->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid" style="max-width:1200px;margin:auto">
+            <a class="navbar-brand" href="#">
+                <h3>Pemrograman Web</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h3 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Sasha Alicia (20210121020)</h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="home.html">
+                                <h5>Home</h5>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <h5>Daftar Program</h5>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="program1.html">Program Penjualan Barang</a></li>
+                                <li><a class="dropdown-item" href="program2.html">Program Penggajian PT.SATU MALAM 2 CINTA</a></li>
+                                <li><a class="nav-link active dropdown-item" href="program3.html">FORM PEMBELIAN BARANG (NON MEMBER)</a></li>
+                                <li><a class="dropdown-item" href="program4.html">FORM PEMBELIAN BARANG (MEMBER)</a></li>
+                                <li><a class="dropdown-item" href="program5.html">Program Penjualan Barang Elektronik</a></li>
+                                <li><a class="dropdown-item" href="program6.html">Program Penjualan Motor</a></li>
+                                <li><a class="dropdown-item" href="program7.html">Menghitung Biaya Tagihan Listrik PLN BANDUNG</a></li>
+                                <li><a class="dropdown-item" href="program8.html">Program Kredit Rumah</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Tabel-->
+    <center>
+        <div style="background-color: #fff; border: 1px solid #17202A; height: auto; margin: 100px 0px; padding: 5px; text-align: auto; width: 50%;">
+            <h2>FORM PEMBELIAN BARANG</h2>
+            <hr>
+            
+            <form action="">
+            <table style="margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;">
+
+                <tr>
+                    <td width="100px">Nama Barang</td>
+                    <td>:</td>
+                    <td><select id="select_barang" size="1" name="select_barang">
+                    <option value="Monitor">Monitor</option>
+                    <option value="Keyboard">Keyboard</option>
+                    <option value="Mouse">Mouse</option>
+                    </select></td>
+                </tr>
+
+                <tr>
+                    <td width="100px">Jumlah</td>
+                    <td>:</td>
+                    <td><input id="input_jumlah" type="number" name="jumlah" class="form-control" required></td>
+                </tr>
+
+                <tr>
+                    <td width="100px">Harga</td>
+                    <td>:</td>
+                    <td><input id="input_harga" type="number" name="harga" class="form-control" required></td>
+                </tr>
+
+                <table style="margin-left:auto;margin-right:auto">
+                    <hr>
+                    <tr>
+                        <td><button type="button" class="btn btn-primary" id="button">Proses</button></td>
+                        <td><button type="reset" class="btn btn-warning" id="reset">Reset</button></td>
+                        <td><button onclick="window.location.reload()" class="btn btn-danger" id="reset">Reset All</button></td>
+                    </tr>
+                </table>
+              </form>
+        </div>
+
+        <div style="background-color: #fff; border: 0px solid #17202A; height: auto; margin: 100px 0px; padding: 5px; text-align: auto; width: 50%;">
+            <table class="table table-striped " style="margin-left:auto;margin-right:auto" weight="-50" id="table_hasil">
+                  <tr class="table-dark">
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Barang</th>
+                    <th scope="col">Jumlah Barang</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Total</th>
+                  </tr>
+            </table>
+        </div>
+    </center>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script>
+        for (var i = 1; i <= 10; i++) {
+            console.log(i);
+        }
+    </script>
+
+    <script>
+        for (const proses = 1; i <= 10; i++) {
+            console.log(proses);
+        }
+        const proses = document.getElementById("button");
+
+        proses.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            var nama_barang = document.getElementById("select_barang").value;
+
+            var jumlah_barang = document.getElementById("input_jumlah").value;
+
+            var harga_barang = document.getElementById("input_harga").value;
+
+            var total = parseInt(jumlah_barang) * parseInt(harga_barang);
+
+            document.getElementById("select_barang").value = nama_barang;
+
+            //ambil urutan isi table
+            var no_urut = parseInt(document.getElementById("table_hasil").rows.length);
+
+            var table = document.getElementById("table_hasil");
+            var row = table.insertRow(no_urut);
+        
+            //isitabel dengan hasil 
+            row.insertCell(0).innerHTML = no_urut;
+            row.insertCell(1).innerHTML = nama_barang;
+            row.insertCell(2).innerHTML = jumlah_barang;
+            row.insertCell(3).innerHTML = harga_barang;
+            row.insertCell(4).innerHTML = total;
+
+            // kosongkan input 
+            document.getElementById("select_barang").value = "";
+            document.getElementById("input_jumlah").value = "";
+            document.getElementById("input_harga").value = "";
+
+        });
+    </script>
+</body>
+
+</html>
