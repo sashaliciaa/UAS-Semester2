@@ -47,7 +47,7 @@
                                 <li><a class="dropdown-item" href="program5.html">Program Penjualan Barang Elektronik</a></li>
                                 <li><a class="dropdown-item" href="program6.html">Program Penjualan Motor</a></li>
                                 <li><a class="dropdown-item" href="program7.html">Menghitung Biaya Tagihan Listrik PLN BANDUNG</a></li>
-                                <li><a class="nav-link dropdown-item" href="program8.html">Program Kredit Rumah</a></li>
+                                <li><a class="nav-link active dropdown-item" href="program8.html">Program Kredit Rumah</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -92,7 +92,7 @@
               </form>
               <div style="float:left; background-color: #fff; border: 0px solid #17202A; height: auto; margin-top:10px;margin-bottom:0px; padding: 5px; text-align: auto; width: 80%;">
                     
-                    <table class="table table-dark table-striped table-bordered" style="border:#fff;margin-left:10%;margin-right:10%;margin-top:0px;margin-bottom:auto;" id="table_harga">
+                    <table class="table table-striped table-bordered" style="border:#fff;margin-left:10%;margin-right:10%;margin-top:0px;margin-bottom:auto;" id="table_harga">
                     
                     <tr>
                         <th scope="col">TYPE</th>
@@ -156,35 +156,68 @@
                     </table>
                 </div>
 
-                <div style="float:left;background-color: #fff; border: 0px solid #17202A; height: auto; margin: 10px 0px; padding: 5px; text-align: auto; width: 80%;">
-                    <h3>Rincian Tagihan</h3>
-                <table class="table table-borderless" style="margin-left:auto;margin-right:auto" weight="-50" id="table_hasil">
+                <div style="float:left;background-color: #fff; border: 0px solid #17202A; height: auto; margin: 0px 0px; padding: 5px; text-align: center; width: 80%;">
+                <table class="table table-bordered" style="margin-left:auto;margin-right:auto" weight="-50" id="table_hasil">
                     <tr>
-                        <th scope="col">Jumlah</th>
-                        <th scope="col">Tarif per KWH</th>
-                        <th scope="col">Abodemen</th>
-                        <th scope="col">SubTotal</th>
+                        <th scope="col">Bulan</th>
+                        <th scope="col">Angsuran</th>
+                        <th scope="col">Sisa</th>
                     </tr>
                         
                     </table>
-                </div>
-                <div style="float:left;background-color: #fff; border: 0px solid #17202A; height: auto; margin: 10px 0px; padding: 5px; text-align: auto; width: 80%;">
-                <table class="table table-borderless" style="margin-left:auto;margin-right:auto" weight="-50" id="table_hasil">
-                    <hr>
-                    <tr>
-                        <td>Subtotal</td>
-                    </tr>
-                    <tr>
-                        <td>Pajak</td>
-                    </tr>
-                    <tr>
-                        <td>Bayar</td>
-                    </tr>
-                </table>
             </div>
         </div>
-
-        
         </center>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script>
+        const proses = document.getElementById("button");
+
+        proses.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            // ambil value inputan
+            var select_type = document.getElementById("select_type").value;
+            var input_waktu = document.getElementById("input_waktu").value;
+
+            var uang_muka = 20/100 // jadi 20% kan
+
+            //tentukan harga sesuai tipe rumah
+            if(select_type == "Alamanda") {
+                var harga_rumah = 120000000;
+            } else if(select_type == "Mawar") {
+                var harga_rumah = 130000000;
+            }
+            
+
+            // kalkulasi
+            var uang_muka = harga_rumah * uang_muka;
+            var sisa_bayar = harga_rumah - uang_muka;
+            var biaya_angsuran = sisa_bayar / input_waktu;
+
+
+            //isi data sebalh kanan
+            document.getElementById("type_rumah").value = select_type;
+            document.getElementById("harga_rumah").value = harga_rumah;
+            document.getElementById("uang_muka").value = uang_muka;
+            document.getElementById("sisa").value = sisa_bayar;
+            document.getElementById("waktu_kredit").value = input_waktu;
+            document.getElementById("angsuran").value = biaya_angsuran;
+
+            //tampilkan hasil angsuran
+            var table = document.getElementById("table_hasil");
+            for(var i = 1; i <= input_waktu; i++) {
+                var row = table.insertRow(i);
+
+                row.insertCell(0).innerHTML = i;
+                row.insertCell(1).innerHTML = biaya_angsuran;
+                row.insertCell(2).innerHTML = sisa_bayar - (biaya_angsuran * i);
+            }
+
+
+
+        });
+    </script>
+
     </body>
 </html>

@@ -67,7 +67,7 @@
             <table style="margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;">
 
                 <tr>
-                    <td width="100px">Merk Motor</td>
+                    <td>Merk Motor</td>
                     <td>:</td>
                     <td><select id="select_merk" size="1" name="select_merk">
                     <option value="Honda">Honda</option>
@@ -87,8 +87,8 @@
                 <tr>
                     <td>Cara Pembayaran</td>
                     <td>:</td>
-                    <td><input id="pil_pembayaran" type="radio" name="pembayaran" class="pil_pembayaran" value="Tunai">Tunai<br>
-                        <input id="pil_pembayaran" type="radio" name="pembayaran" class="pil_pembayaran" value="Kredit">Kredit<br>
+                    <td><input id="pil_pembayaran" type="radio" name="pembayaran" class="pil_pembayaran" value="Tunai">Tunai (Diskon 10%)<br>
+                        <input id="pil_pembayaran" type="radio" name="pembayaran" class="pil_pembayaran" value="Kredit">Kredit (Bunga 15%)<br>
                 </tr>
 
                 <table style="margin-left:auto;margin-right:auto">
@@ -161,18 +161,7 @@
         </div>
     </center>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
-    <script>
-        for (var i = 1; i <= 10; i++) {
-            console.log(i);
-        }
-    </script>
-
         <script>
-
-        for (const proses = 1; i <= 10; i++) {
-            console.log(proses);
-        }
         const proses = document.getElementById("button");
 
         proses.addEventListener("click", function(e) {
@@ -181,9 +170,9 @@
             //ambil vaue checkbox .pil_aksesoris berarrti dari class aksesoris
             var merk = document.getElementById("select_merk").value;
 
-            var aksesoris = document.querySelector('.pil_aksesoris').value;
+            var aksesoris = document.querySelector('.pil_aksesoris:checked').value;
 
-            var pembayaran = document.querySelector('.pil_pembayaran').value;
+            var pembayaran = document.querySelector('.pil_pembayaran:checked').value;
             
             var harga_motor = 0;
             if (merk == "Honda"){
@@ -195,12 +184,12 @@
             }
 
             var harga_aksesoris = 0;
-            if (aksesoris == "Velg"){
-                harga_aksesoris = 450000;
-            }else if (aksesoris == "Helm"){
-                harga_aksesoris = 250000;
-            }else if (aksesoris == "Jaket"){
-                harga_aksesoris = 300000;
+            if (aksesoris == "USB"){
+                harga_aksesoris = 50000;
+            }else if (aksesoris == "Memory"){
+                harga_aksesoris = 120000;
+            }else if (aksesoris == "Speaker"){
+                harga_aksesoris = 40000;
             }
 
             var total = parseInt(harga_motor) + parseInt(harga_aksesoris);
@@ -211,7 +200,8 @@
             }else if (pembayaran == "Kredit"){
                 metode_pembayaran = total * 0.15
             }
-            
+
+            // var diskon_bunga = 
             var bayar = parseInt(metode_pembayaran);
 
 
@@ -231,9 +221,10 @@
             row.insertCell(6).innerHTML = bayar;
 
             // kosongkan input 
-            document.getElementById("select_merk").value = "";
-            document.getElementsByClassName("pil_aksesoris").value = "";
-            document.getElementsByClassName("pil_pembayaran").value = "";
+            document.getElementById("input_nama").value = "";
+            document.getElementById("input_jumlah").value = "";
+            document.getElementById("input_harga").value = "";
+            document.getElementById("pil_aksesoris").value = "";
 
         });
     </script>
